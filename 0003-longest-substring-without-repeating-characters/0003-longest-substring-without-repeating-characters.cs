@@ -2,6 +2,8 @@ public class Solution {
     
     public int LengthOfLongestSubstring(string s) {
         
+       if (s=="") return 0; 
+        
         var right=0; 
         var left=0;
         var maxLength=0;
