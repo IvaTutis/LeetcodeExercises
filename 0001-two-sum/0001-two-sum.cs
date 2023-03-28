@@ -7,10 +7,12 @@ public class Solution {
             try{
             dictionary.Add(nums[i], i);
             }catch{
+                //ignore duplicate values
                 continue;
             };
         }
 
+        //for 2 half-values, since dictionary works only w unique values 
         try{
             if(dictionary.TryGetValue(target/2, out var value1)){
                 var index1 = value1;
@@ -24,28 +26,15 @@ public class Solution {
             }
         }catch{}
 
-  /*      
-        if(nums.SequenceEqual(new List<int>(){3,2,4})){
-        var length = dictionary.Keys.ToList().Count;
-        var jj = length*2;
-        var dictionarytest= new int[jj];
-        var list = dictionary.Keys.ToList();
-        for(int i=0; i<length; i++){
-            dictionarytest[2*i]=list[i];
-            dictionarytest[2*i+1]=dictionary[list[i]];
-        }
-        return dictionarytest;
-        }
-
-*/
+        //find the two number pair that sums to target, return indices
         foreach(var number1 in dictionary.Keys.ToList()){
             var number2=target-number1;
             if(number2!= number1
                 && dictionary.TryGetValue(number1, out var value1)
                 && dictionary.TryGetValue(number2, out var value2)
                 && number1+number2==target){
-                    result[0]=dictionary[number1];
-                    result[1]=dictionary[number2];
+                    result[0]=value1;
+                    result[1]=value2;
                     return result;
                 }
         }
