@@ -6,20 +6,20 @@ public class Solution {
         
         var right=0; 
         var left=0;
-        var max_length=0;
+        var maxLength=0;
         var charset = new HashSet<char>();
         
         while (right<s.Length){
             if(!charset.Contains(s[right])){
                 charset.Add(s[right]);
                 right++;
-                max_length=Math.Max(max_length, charset.Count);
+                maxLength=Math.Max(maxLength, charset.Count);
             }else{
                 charset.Remove(s[left]);
                 left++;
             }
         }
         
-        return max_length;
+        return maxLength;
     }
 }
